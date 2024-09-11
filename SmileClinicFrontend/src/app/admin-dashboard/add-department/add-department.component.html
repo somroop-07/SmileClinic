@@ -1,0 +1,42 @@
+<mat-toolbar class="custom-toolbar">
+  <mat-toolbar-row>
+    <span class="header-title">Enter Department Details</span>
+    <span class="spacer"></span>
+    <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="departmentForm">
+    <div class="form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Department Name</mat-label>
+        <input matInput formControlName="department" required />
+        <mat-error
+          *ngIf="
+            departmentForm.controls.department.touched &&
+            departmentForm.controls.department.invalid
+          "
+        >
+          <span *ngIf="departmentForm.controls.department.errors.required"
+            >Please enter new department name</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button
+    mat-raised-button
+    class="submitButton"
+    type="submit"
+    [disabled]="departmentForm.invalid"
+    (click)="onSubmit()"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

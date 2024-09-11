@@ -1,0 +1,230 @@
+<div class="dashboard-container">
+  <div class="welcome-text">
+    <div class="welcome-left">Welcome Admin,</div>
+
+    <div class="button-container">
+      <div class="dropdown">
+        <button mat-button class="menu-button" (click)="toggleDropdown()">
+          <mat-icon>menu</mat-icon> Home
+        </button>
+        <div class="dropdown-content" *ngIf="isDropdownOpen">
+          <button
+            class="dropdown-item"
+            (click)="showDepartments(); closeDropdown()"
+          >
+            Manage Departments
+          </button>
+          <button
+            class="dropdown-item"
+            (click)="showAppointments(); closeDropdown()"
+          >
+            Manage Appointments
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Manage Departments Start-->
+
+  <div class="book-appointment-card" *ngIf="isDepartmentsVisible">
+    <h2>Manage Departments</h2>
+
+    <!-- Filter and Search Row -->
+    <div class="filter-search-row">
+      <!-- Filter by Department -->
+      <mat-form-field appearance="outline" class="filter-department">
+        <mat-label>Department</mat-label>
+        <mat-icon matPrefix>filter_list</mat-icon>
+
+        <!-- Clear selection option (X) -->
+        <button
+          *ngIf="selectedDepartment"
+          mat-icon-button
+          matSuffix
+          aria-label="Clear department filter"
+          (click)="clearDepartmentSelection($event)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-select
+          [(value)]="selectedDepartment"
+          (selectionChange)="filterDoctorsHelper()"
+        >
+          <mat-option
+            *ngFor="let department of departmentList"
+            [value]="department"
+          >
+            {{ department.department }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Search by Doctor Name -->
+      <mat-form-field class="search-doctor">
+        <mat-icon matPrefix>search</mat-icon>
+        <input
+          matInput
+          placeholder="Search Doctor"
+          [(ngModel)]="searchDoctor"
+          (input)="onSearchInput()"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let doctor of doctorSuggestions"
+            (click)="selectDoctorSuggestion(doctor)"
+          >
+            {{ doctor.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <!--Div to add department and doctor-->
+    <div class="add-department">
+      <button
+        class="add-department-button"
+        mat-button
+        (click)="onAddDepartment()"
+      >
+        <mat-icon>local_hospital</mat-icon>
+        Add Department
+      </button>
+
+      <button class="add-department-button" mat-button (click)="onAddDoctor()">
+        <mat-icon>local_hospital</mat-icon>
+        Add Doctor
+      </button>
+    </div>
+    <!-- Doctor Cards -->
+
+    <div *ngIf="filteredDoctors.length == 0" class="no-results">
+      No Results to show
+    </div>
+
+    <div *ngIf="!(filteredDoctors.length == 0)" class="doctor-card-parent">
+      <div *ngFor="let doctor of filteredDoctors" class="doctor-card">
+        <mat-card class="doctor-card-child">
+          <!-- Doctor Name and Department -->
+          <div class="doctor-header">
+            <span>{{ doctor.name }}</span>
+            <span class="department">{{ doctor.department_name }}</span>
+          </div>
+
+          <!-- Doctor Description -->
+          <div class="doctor-description">{{ doctor.description }}</div>
+
+          <!-- Doctor Fees and Date Picker -->
+          <div class="doctor-footer">
+            <span class="doctor-fees">Fees: ₹{{ doctor.fees }}</span>
+            <span class="icons-doctor">
+              <a class="icons-doctor-icons" (click)="onEditDoctor(doctor)"
+                ><mat-icon>edit</mat-icon></a
+              >
+              <a class="icons-doctor-icons" (click)="onDeleteDoctor(doctor)"
+                ><mat-icon>delete</mat-icon></a
+              >
+            </span>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <!--Manage Departments End-->
+
+  <!--Manage Appointment Starts-->
+
+  <div class="book-appointment-card" *ngIf="isAppointmentsVisible">
+    <h2>Manage Appointments</h2>
+    <mat-accordion class="container">
+      <div class="calender">
+        <mat-form-field appearance="outline">
+          <button
+            *ngIf="selectedDate"
+            mat-icon-button
+            matPrefix
+            aria-label="Clear department filter"
+            (click)="clearCalenderSelection($event)"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-label>Select Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="selectedDate"
+            (dateChange)="onDateChange($event.value)"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="slots-container">
+        <div
+          *ngFor="let slot of slotAppointments; let i = index"
+          class="slot-section"
+        >
+          <h3>Slot {{ i + 1 }} ({{ i + 1 | slotName }})</h3>
+          <mat-card class="no-apppointment" *ngIf="slot.length == 0">
+            <mat-card-content>No Appointments</mat-card-content>
+          </mat-card>
+          <mat-card *ngFor="let appointment of slot" class="appointment-card">
+            <mat-card-content>
+              <div class="appointment-details">
+                <div class="doctor-info">
+                  <div class="app-input">
+                    <strong>Doctor:</strong> {{ appointment.doctorName }}
+                  </div>
+                  <div class="app-input">
+                    <strong>Department:</strong>
+                    {{ appointment.departmentName }}
+                  </div>
+                </div>
+                <div class="date-slot">
+                  <div class="app-input">
+                    <strong>Date:</strong> {{ appointment.date }}
+                  </div>
+                  <div class="app-input">
+                    <strong>Slot:</strong> {{ appointment.slotId | slotName }}
+                  </div>
+                </div>
+                <div class="user-info">
+                  <div class="app-input">
+                    <strong>Patient Name:</strong> {{ appointment.userName }}
+                  </div>
+                  <div class="show-contact">
+                    <button
+                      mat-button
+                      (click)="toggleContactDetails(appointment)"
+                    >
+                      Show Contact Details
+                    </button>
+                  </div>
+                </div>
+                <div
+                  *ngIf="appointment.showContactDetails"
+                  class="contact-details"
+                >
+                  <div style="margin-bottom: 6px">
+                    <strong>Email:</strong> {{ appointment.userEmail }}
+                  </div>
+                  <div>
+                    <strong>Mobile:</strong> {{ appointment.userMobile }}
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-accordion>
+  </div>
+
+  <!--Manage Appointment Ends-->
+</div>

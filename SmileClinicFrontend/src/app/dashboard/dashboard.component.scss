@@ -1,0 +1,401 @@
+@import './../../assets/styles/variables.scss';
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  box-sizing: border-box; /* Include padding in height calculation */
+  
+}
+
+.welcome-text {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 35px;
+  color: $header-secondary-color;
+  margin-bottom: 45px;
+  font-family: $font-secondary;
+
+}
+.welcome-left{
+
+  display:flex;
+  align-items: center;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.button-container {
+  display: flex;
+  justify-content: start; /* Move buttons to the right */
+  gap: 20px;
+ 
+
+.menu-button{
+  font-size: 25px;
+  font-family: $font-secondary;
+  color: $header-secondary-color;
+
+ &:hover {
+  background-color: $card;
+}
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+
+  position: absolute;
+  min-width: 200px; 
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+  margin-top: 10px; 
+  padding: 0;
+  border-radius: 4px; 
+
+}
+
+.dropdown-content .dropdown-item {
+  font-family: $font-secondary;
+  padding: 16px 16px;
+  text-decoration: none;
+  display: block; /* Ensures items stack vertically */
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 2px solid #ddd; /* Optional: Adds separator between items */
+}
+
+.dropdown-content .dropdown-item:hover {
+  background-color:  rgb(223, 212, 190);/* Highlight on hover */
+}
+
+.dropdown.open .dropdown-content {
+  display: block; /* Show dropdown content when open */
+}
+
+}
+// .profile-button, .appointment-button {
+//   font-size: 16px;
+//   padding: 10px 20px;
+//   background-color:$side-bar;
+//   color: white;
+//   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+//   font-family: $font-secondary;
+ 
+// }
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center cards vertically */
+  flex: 1; /* Allow it to grow and fill available space */
+  margin-bottom: 100px;
+
+}
+
+mat-card {
+  width: 60%;
+  max-width: 950px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin: 10px 0; /* Space between cards */
+  background-color: $card; 
+  font-family: $font-secondary;
+  border-radius: 10px;
+}
+
+.card-header {
+  background-color: $side-bar;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 25px;
+  gap:10px;
+  margin-bottom: 20px;
+}
+
+
+.info-row {
+
+  display: flex;
+   justify-content: space-between;
+  // align-items: center;
+  // margin-bottom: 10px;
+   margin: 20px 0;
+  font-size: 20px;
+
+
+  .mobile-field{
+    display: flex;
+    justify-content: space-between;
+  
+     
+  }
+  .mobile-field-input-box-parent{
+    display: flex;
+    flex-direction: column;
+   
+    width: auto;
+    padding: 0%;
+  .mobile-field-input-box{
+    display: flex;
+    justify-content: space-between;
+    
+     
+  }
+}
+   
+  
+  .icon-button, .icon-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .icon-button:focus, .icon-link:focus {
+    outline: none;
+  }
+
+  .mobile-input {
+    width: 135px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 17px;
+    background-color: rgb(245, 225, 180);
+    font-family: $font-secondary;
+    transition: border-color 0.3s ease-in-out;
+    align-self: flex-end;
+  }
+  
+  /* Add focus effect on the input field */
+  .mobile-input:focus {
+    outline: none;
+    border-color: $side-bar;
+    box-shadow: 0 0 5px $side-bar;
+  }
+
+  .mobile-input:hover {
+    border-color: $side-bar;
+  }
+  
+  /* Style for icon buttons */
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .icon-button mat-icon {
+    font-size: 20px;
+    
+    color: $side-bar;
+  }
+  
+ .error{
+  font-size: 12px;
+  color: red;
+ }
+}
+
+label {
+  font-weight: bold;
+}
+
+.appointment-details {
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  background-color:rgb(251, 245, 234);
+  width:80%
+}
+.card-subtitle{
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color:rgb(251, 245, 234);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+
+}
+.card-subtitle:hover {
+  cursor: pointer;
+ background-color:  rgb(246, 231, 200);
+}
+
+.subtitle-active{
+  background-color:  rgb(245, 230, 200);
+}
+.subtitle-inactive{
+  background-color:rgb(251, 245, 234);
+}
+.appointment_card_no_items{
+  font-size: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.appointment_card{
+  display: flex;
+  align-items: center;
+ justify-content: center;
+ margin-bottom: 15px;
+ 
+
+}
+.appointments-card{
+  margin-bottom: 20px;
+
+}
+.cancel-button{
+  background-color: $side-bar;
+  color: white;
+}
+
+
+@media (max-width: 600px) {
+  mat-card {
+    width: 90%;
+  }
+  .dashboard-container {
+    padding: 20px;
+   
+  }
+
+  .welcome-text {
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom:70px;
+
+  
+  }
+
+  .welcome-left{
+    margin: 0px;
+ 
+  }
+ 
+
+  .button-container {
+    display: flex;
+    justify-content: end;
+    gap: 0px;
+    margin-right: 0px;
+    padding-right: 0px;
+    align-items: start;
+  
+  
+  .menu-button{
+    font-size: 15px;
+
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    position: absolute;
+  }
+  
+  .dropdown-content .dropdown-item {
+    padding: 10px 10px;
+    font-size: 10px;
+    border-bottom: 1px solid #ddd; 
+  }
+    
+  }
+
+
+
+ 
+  mat-card {
+    width: 95%;
+    padding: 10px;
+    margin: 25px 0; /* Space between cards */
+   
+  }
+  
+  .card-header {
+
+    padding: 5px;;
+    padding: 10px;
+    font-size: 18px;
+    gap:10px;
+    margin-bottom: 5px;
+  }
+  
+  
+  .info-row {
+    font-size: 14px;
+  
+  
+  .mobile-input {
+    width: 65px;
+    font-size: 12px;
+  }
+  .icon-button mat-icon {
+    font-size: 15px;
+    
+    color: $side-bar;
+  }
+  
+ .error{
+  font-size: 8px;
+
+ }
+
+}
+.appointment-details {
+  padding: 7px;
+  margin-top: 10px;
+  width: 100%;
+}
+.card-subtitle{
+  font-size: 12px;
+  padding: 15px;
+  margin-top: 10px;
+
+}
+.appointment_card_no_items{
+  font-size: 14px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.cancel-button{
+  background-color: $side-bar;
+  color: white;
+}
+}
+  
+
+
+  /* Apply CSS to hide increment/decrement icons */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}

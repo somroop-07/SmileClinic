@@ -1,0 +1,110 @@
+<mat-toolbar class="custom-toolbar">
+  <mat-toolbar-row>
+    <span class="header-title">Enter Doctor Details</span>
+    <span class="spacer"></span>
+    <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="doctorForm">
+    <div class="form-container">
+      <!-- Doctor Name -->
+      <mat-form-field appearance="outline">
+        <mat-label>Doctor Name</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-error
+          *ngIf="
+            doctorForm.controls.name.touched && doctorForm.controls.name.invalid
+          "
+        >
+          <span *ngIf="doctorForm.controls.name.errors.required"
+            >Please enter the doctor's name</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Department Name (Show department name but store ID) -->
+      <mat-form-field appearance="outline">
+        <mat-label>Department</mat-label>
+
+        <!-- Clear selection option (X) -->
+        <button
+          *ngIf="doctorForm.get('department_id').value"
+          mat-icon-button
+          matSuffix
+          aria-label="Clear department filter"
+          (click)="clearDepartmentSelection()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+
+        <mat-select formControlName="department_id" required>
+          <mat-option
+            *ngFor="let department of departmentList"
+            [value]="department.department_id"
+          >
+            {{ department.department }}
+            <!-- Display department name -->
+          </mat-option>
+        </mat-select>
+
+        <mat-error
+          *ngIf="
+            doctorForm.controls.department_id.touched &&
+            doctorForm.controls.department_id.invalid
+          "
+        >
+          <span *ngIf="doctorForm.controls.department_id.errors.required">
+            Please select a department
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Doctor Description -->
+      <mat-form-field appearance="outline">
+        <mat-label>Doctor Description</mat-label>
+        <textarea matInput formControlName="description" required></textarea>
+        <mat-error
+          *ngIf="
+            doctorForm.controls.description.touched &&
+            doctorForm.controls.description.invalid
+          "
+        >
+          <span *ngIf="doctorForm.controls.description.errors.required"
+            >Please provide a description</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Fees -->
+      <mat-form-field appearance="outline">
+        <mat-label>Fees</mat-label>
+        <input matInput formControlName="fees" type="number" required />
+        <mat-error
+          *ngIf="
+            doctorForm.controls.fees.touched && doctorForm.controls.fees.invalid
+          "
+        >
+          <span *ngIf="doctorForm.controls.fees.errors.required"
+            >Please enter the fees</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button
+    mat-raised-button
+    class="submitButton"
+    type="submit"
+    [disabled]="doctorForm.invalid"
+    (click)="onSubmit()"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

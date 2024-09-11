@@ -1,0 +1,43 @@
+<div class="app-container">
+  <mat-toolbar class="header-toolbar">
+    <div class="header-left">
+      <img
+        src="assets/icons/icon.jpg"
+        alt="Smile Clinic Icon"
+        class="header-icon"
+      />
+      <span class="header-title">Smile Clinic</span>
+    </div>
+    <span class="spacer"></span>
+    <div class="header-right">
+      <button mat-button (click)="handleLoginAction()">Login</button>
+      <button mat-button color="accent" (click)="signUpAction()">Signup</button>
+    </div>
+  </mat-toolbar>
+
+  <!--Content of Home Page-->
+
+  <div class="content">
+    <div class="caption-part">
+      <p class="caption-text">The journey to wellness begins with a smile.</p>
+
+      <p class="caption-subtext">Book doctor appointments with ease</p>
+    </div>
+    <div class="image-part">
+      <img
+        src="assets/img/doctor.jpg"
+        alt="Descriptive Image"
+        class="rounded-image"
+      />
+    </div>
+  </div>
+
+  <!--Footer-->
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="contact-info">Contact us: +91 8334938086</p>
+      <p class="thanks-message">Thanks for visiting Smile Clinic!</p>
+    </div>
+  </footer>
+</div>

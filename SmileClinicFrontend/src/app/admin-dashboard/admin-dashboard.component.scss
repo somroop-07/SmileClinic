@@ -1,0 +1,586 @@
+@import './../../assets/styles/variables.scss';
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  box-sizing: border-box; /* Include padding in height calculation */
+
+  
+}
+
+.welcome-text {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 35px;
+  color: $header-secondary-color;
+  margin-bottom: 10px;
+  font-family: $font-secondary;
+
+}
+.welcome-left{
+
+  display:flex;
+  align-items: center;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.button-container {
+  display: flex;
+  justify-content: start; /* Move buttons to the right */
+  gap: 20px;
+ 
+
+.menu-button{
+  font-size: 25px;
+  font-family: $font-secondary;
+  color: $header-secondary-color;
+
+ &:hover {
+  background-color: $card;
+}
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+
+  position: absolute;
+  min-width: 230px; 
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+  margin-top: 10px; 
+  padding: 0;
+  border-radius: 4px; 
+
+}
+
+.dropdown-content .dropdown-item {
+  font-family: $font-secondary;
+  padding: 16px 16px;
+  text-decoration: none;
+  display: block; /* Ensures items stack vertically */
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 2px solid #ddd; /* Optional: Adds separator between items */
+}
+
+.dropdown-content .dropdown-item:hover {
+  background-color:  rgb(223, 212, 190);/* Highlight on hover */
+}
+
+.dropdown.open .dropdown-content {
+  display: block; /* Show dropdown content when open */
+}
+
+}
+
+.book-appointment-card {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: $font-secondary;
+  color: $header-secondary-color;
+  font-size: 30px;
+}
+.add-department{
+ padding:5px;
+margin-bottom: 20px;
+display: flex;
+gap:50px;
+align-items: center;
+justify-content: start;
+
+}
+.add-department-button{
+  font-family: $font-secondary;
+  font-size: 20px;
+  padding: 10px;
+
+
+  &:hover{
+   background-color: $card;
+  }
+}
+.mobile-field{
+  display: flex;
+  justify-content: space-between; 
+}
+.mobile-field-input-box-parent{
+  display: flex;
+  flex-direction: column;
+ 
+  width: auto;
+  padding: 0%;
+.mobile-field-input-box{
+  font-size: 30px;
+
+  display: flex;
+  justify-content: space-between;
+   
+}
+}
+ 
+.mobile-input:focus {
+  outline: none;
+  border-color: $side-bar;
+  box-shadow: 0 0 5px $side-bar;
+}
+
+.mobile-input:hover {
+  border-color: $side-bar;
+}
+
+/* Style for icon buttons */
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.icon-button mat-icon {
+  font-size: 20px;
+  color: $side-bar;
+}
+
+.error{
+font-size: 12px;
+color: red;
+}
+
+
+.filter-search-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filter-department, .search-doctor {
+  width: 48%;
+}
+.doctor-card-parent{
+
+  margin-bottom: 100px;
+}
+.doctor-card {
+  margin-bottom: 20px;
+
+  
+}
+.doctor-card-child{
+
+  border-radius: 5px;
+  
+}
+.doctor-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 20px 5px 20px;
+  font-family: $font-secondary;
+}
+
+.department {
+  text-align: right;
+  font-size: 15px;
+}
+
+.doctor-description {
+
+  margin-left: 20px;
+}
+
+.doctor-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 20px 10px 20px;
+}
+.icons-doctor{
+  display: flex;
+   gap:10px;
+
+   
+}
+.icons-doctor-icons{
+  color: $header-secondary-color; 
+  &:hover{
+   cursor: pointer;
+
+
+  }
+}
+
+
+.doctor-fees {
+  font-weight: bold;
+}
+
+.no-results{
+  font-size: 15px;
+  padding:5px;
+  display: flex;
+ justify-content: center;
+  
+}
+
+
+@media (max-width: 600px) {
+  mat-card {
+    width: 90%;
+  }
+  .dashboard-container {
+    padding: 20px;
+   
+  }
+
+  .welcome-text {
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+
+  .welcome-left{
+    margin: 0px;
+ 
+  }
+ 
+  .mobile-input {
+    width: 65px;
+    font-size: 12px;
+  }
+  .icon-button mat-icon {
+    font-size: 15px;
+    
+    color: $side-bar;
+  }
+  
+ .error{
+  font-size: 8px;
+
+ }
+  .button-container {
+    display: flex;
+    justify-content: end;
+    gap: 0px;
+    margin-right: 0px;
+    padding-right: 0px;
+    align-items: start;
+  
+  
+  .menu-button{
+    font-size: 15px;
+
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    position: absolute;
+    min-width: 160px; 
+  }
+  
+  .dropdown-content .dropdown-item {
+    padding: 10px 10px;
+    font-size: 10px;
+    border-bottom: 1px solid #ddd; 
+  }
+    
+  }
+
+  /* Stack filter and search inputs vertically */
+  .filter-search-row {
+    flex-direction: column;
+    margin-bottom: 0px;
+  }
+
+  .filter-department, .search-doctor {
+    width: 100%;
+  }
+
+  /* Stack doctor header content vertically */
+  .doctor-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 10px 15px;
+    gap:5px
+  }
+
+  .department {
+    text-align: left;
+    font-size: 12px;
+  }
+  .doctor-description {
+
+    margin:0px 15px 10px 15px;
+  }
+  .doctor-footer {
+  
+    margin: 0px 15px 10px 20px;
+  }
+.doctor-card{
+  display: flex;
+  justify-content: center;
+}
+
+
+  
+  
+  h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .add-department{
+   padding:5px;
+ 
+justify-content: center;
+  gap:15px;
+
+
+  
+  }
+  .add-department-button{
+    font-family: $font-secondary;
+    font-size: 12px;
+    padding: 10px;
+
+    background-color: $side-bar;
+    color:white
+  
+    
+  }
+  .mobile-field{
+    display: flex;
+    justify-content: space-between; 
+  }
+  .mobile-field-input-box-parent{
+    display: flex;
+    flex-direction: column;
+   
+    width: auto;
+    padding: 0%;
+  .mobile-field-input-box{
+    font-size: 30px;
+  
+    display: flex;
+    justify-content: space-between;
+     
+  }
+  }
+   
+  .mobile-input:focus {
+    outline: none;
+    border-color: $side-bar;
+    box-shadow: 0 0 5px $side-bar;
+  }
+  
+  .mobile-input:hover {
+    border-color: $side-bar;
+  }
+  
+  /* Style for icon buttons */
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .icon-button mat-icon {
+    font-size: 20px;
+    color: $side-bar;
+  }
+  
+  .error{
+  font-size: 12px;
+  color: red;
+  }
+ 
+}
+
+//Show Appointment css
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  width: 50%;
+  max-width: 700px;
+
+  .slots-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    margin-bottom: 50px;
+  
+
+    .slot-section {
+      margin-bottom: 16px;
+      padding: 10px;
+
+      h3 {
+        margin: 0 0 8px 0;
+        font-size: 25px;
+        font-family: $font-secondary;
+        color: $header-secondary-color;
+      }
+      .no-apppointment{
+        margin-top: 20px ;
+        display: flex;
+        align-items: center;
+        font-size: 16px
+      }
+      
+      .appointment-card {
+        margin-top: 20px;
+        padding: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+
+        .appointment-details {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .doctor-info,
+          .date-slot,
+          .user-info {
+            font-size: 16px;
+            margin: 2px;
+          }
+          .doctor-info,.date-slot{
+            display: flex;
+         
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .user-info {
+            display: flex;
+        
+            justify-content: space-between;
+            
+            gap: 8px;
+           
+            button {
+              font-size: 12px;
+              width: 100%;
+              background-color: $card;
+            }
+          }
+          .show-contact{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+          }
+          .contact-details {
+            margin-top: 8px;
+            padding-left: 10px;
+            font-size: 16px;
+            border-top: 1px solid #ddd;
+            padding-top: 8px;
+          }
+          .app-input{
+            display:flex;
+            flex-direction: column;
+            margin: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Media query for mobile devices
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+  
+    .slots-container {
+      margin-bottom: 50px;
+      .slot-section {
+        margin-bottom: 12px;
+        padding: 0px;
+  
+        h3 {    
+          font-size: 16px;
+          margin-bottom: 0px;
+       
+        }
+        .no-apppointment{
+          margin-top: 10px ;
+          font-size: 12px
+        }
+       
+        .appointment-card {
+          margin-top: 10px;
+   
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          border-radius: 4px;
+   
+  
+          .appointment-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+  
+            .doctor-info,
+            .date-slot,
+            .user-info {
+              font-size: 12px;
+              margin: 0px;
+            }
+           
+  
+            .user-info {
+           
+              align-items: center;
+          
+            
+             
+              button {
+                font-size: 8px;
+                width: 100%;
+                background-color: $card;
+              }
+            }
+            .show-contact{
+              display: flex;
+              justify-content: center;
+              
+            }
+            .contact-details {
+              margin-top: 2px;
+              font-size: 12px;
+              border-top: 1px solid #ddd;
+              padding-top: 8px;
+              padding-left: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

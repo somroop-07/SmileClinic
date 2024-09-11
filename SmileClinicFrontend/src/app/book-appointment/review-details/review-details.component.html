@@ -1,0 +1,47 @@
+<mat-toolbar class="custom-toolbar">
+  <mat-toolbar-row>
+    <mat-icon>info</mat-icon>
+    <span class="header-title">Review Details</span>
+    <span class="spacer"></span>
+    <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <!-- Doctor Info: Doctor name and department -->
+  <div class="doctor-info">
+    <div class="doctor-name">
+      <strong>{{ appointmentDetails?.dr_name }}</strong>
+    </div>
+    <div class="doctor-department">
+      <span>{{ appointmentDetails?.department_name }}</span>
+    </div>
+  </div>
+
+  <!-- Appointment Info: Date and Slot -->
+  <div class="appointment-info">
+    <div class="appointment-date">
+      <mat-icon>event</mat-icon>
+      <span>{{ appointmentDetails?.date }}</span>
+    </div>
+    <div class="appointment-slot">
+      <mat-icon>schedule</mat-icon>
+      <span>{{ appointmentDetails?.slot_id | slotName }}</span>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="center">
+    <button
+      mat-raised-button
+      class="submitButton"
+      (click)="handleChangeAction()"
+    >
+      Confirm
+    </button>
+    <button mat-raised-button class="submitButton" mat-dialog-close>
+      Cancel
+    </button>
+  </mat-dialog-actions>
+</mat-dialog-content>

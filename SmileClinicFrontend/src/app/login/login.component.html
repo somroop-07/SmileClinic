@@ -1,0 +1,76 @@
+<mat-toolbar class="custom-toolbar">
+  <mat-toolbar-row>
+    <span class="header-title">Login Credentials</span>
+    <span class="spacer"></span>
+    <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="loginForm">
+    <div class="form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Email Id</mat-label>
+        <input matInput formControlName="email" required />
+        <mat-error
+          *ngIf="
+            loginForm.controls.email.touched && loginForm.controls.email.invalid
+          "
+        >
+          <span *ngIf="loginForm.controls.email.errors.required"
+            >Please enter email id</span
+          >
+          <span *ngIf="loginForm.controls.email.errors.pattern"
+            >Please enter a valid email id</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          type="password"
+          required
+          [type]="password ? 'password' : 'text'"
+        />
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          (click)="password = !password"
+        >
+          <mat-icon>{{ password ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error
+          *ngIf="
+            loginForm.controls.password.touched &&
+            loginForm.controls.password.invalid
+          "
+        >
+          <span *ngIf="loginForm.controls.password.errors.required"
+            >Please enter Password</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button
+    mat-raised-button
+    class="submitButton"
+    type="submit"
+    [disabled]="!(loginForm.valid && loginForm.dirty)"
+    (click)="onSubmit()"
+  >
+    Login
+  </button>
+  <!-- <button mat-raised-button class="cancelButton" mat-dialog-close>
+    Cancel
+  </button> -->
+</mat-dialog-actions>

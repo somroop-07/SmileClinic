@@ -1,0 +1,80 @@
+@import './../../assets/styles/variables.scss';
+
+
+.custom-toolbar {
+    background-color: $header-secondary-color;
+    color: white;
+
+  }
+  
+  .header-title {
+    flex: 1;
+    margin-left: 10px;
+    font-family: $font-secondary;
+    font-size: 20px; /* Adjust font size for a good appearance */
+    
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding:10px
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .mat-dialog-content {
+    padding: 10px;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  /* Centering the buttons */
+  .mat-dialog-actions {
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+
+ 
+  /* Styling for the primary button */
+  .submitButton {
+    background-color: $header-secondary-color;
+    color: white;
+    width: 40%;
+    margin-bottom: 25px;
+  }
+
+  .submitButton:disabled {
+    background-color: #a2a1a1; /* Light green for disabled state */
+    color: #6c6c6c; /* Darker text color for better contrast */
+    cursor: not-allowed; /* Change cursor to indicate the button is disabled */
+  }
+  
+  /* Styling for the cancel button */
+  .cancelButton {
+    background-color: #e64034;
+    color: white;
+  }
+  
+  /* Responsive design for phones */
+  @media (max-width: 600px) {
+    .header-title {
+      font-size: 18px; /* Slightly smaller font for mobile */
+    }
+  
+    .mat-dialog-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .mat-dialog-actions button {
+      margin: 10px 0;
+      min-width: auto;
+    }
+  }
+  

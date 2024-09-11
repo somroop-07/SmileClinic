@@ -1,0 +1,211 @@
+@import './../../assets/styles/variables.scss';
+
+//CSS For Header
+
+.header-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $header-primary-color;
+    height: 115px; 
+    padding: 0 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    .header-left {
+      display: flex;
+      align-items: center;
+  
+      .header-icon {
+        
+        margin-right: 30px;
+        margin-left: 30px;
+        width: 60px;
+        height: 60px;
+      }
+  
+      .header-title {
+        margin-left: 10px;
+        font-size: 50px;
+        font-weight: 30px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        font-family: $font-secondary;
+      }
+    }
+  
+    .spacer {
+      flex: 1 1 auto;
+    }
+  
+    .header-right {
+      display: flex;
+      
+  
+      button {
+        margin-left: 10px;
+        margin-right: 30px;
+        font-weight: 18;
+        font-size: 23px;
+      }
+    }
+  }
+
+
+
+  @media (max-width: 600px) {
+    .header-toolbar {
+        height: auto;  /* Allow height to adjust */
+        padding: 0 5%;
+        flex-direction: column;  /* Stack items */
+        padding: 0 10px;
+   
+        .header-left {
+          
+            .header-title {
+          
+                font-size: 2rem;
+                margin-top: 15px;
+                
+            }
+            .header-icon {
+               margin-top: 10px;
+                width: 35px;
+                height: 35px;
+                margin-right: 2px;
+            }
+        }
+
+        .header-right {
+            button {
+                font-size: 1.2rem;
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+
+
+  //CSS for  Body
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full height of the viewport */
+    background: $gradient-primary;
+  }
+  body {
+    font-family: Georgia, serif;
+    overflow: hidden;
+   
+  }
+  
+ .content {
+  flex: 1; /* Takes up remaining space */
+  overflow: auto; /* Allows content to scroll if necessary */
+  margin-top: 100px;   
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem; /* Space between the image and caption */
+  margin: 0 auto; /* Center the container horizontally */
+ 
+  
+}
+
+.caption-part {
+  flex: 1; /* Allows this part to take up remaining space */
+}
+
+.caption-text {
+  font-style: italic; /* Make the text cursive */
+  font-size: 2rem; /* Adjust the size as needed */
+ 
+}
+.caption-subtext {
+  font-size: 1.5rem; /* Adjust the size as needed */
+  font-weight: bold;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+.image-part {
+  flex: 1; /* Allows this part to take up remaining space */
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+}
+
+.rounded-image {
+  width:375px; /* Adjust size as needed */
+  height: 375px; /* Adjust size as needed */
+  border-radius: 50%; /* Make the image round */
+  object-fit: cover; /* Ensure the image covers the circle without distortion */
+}
+
+//Body mobile view
+
+@media (max-width: 600px) {
+  .content{
+    flex-direction: column; /* Stack text and image vertically on mobile */
+    align-items: center; /* Center items horizontally */
+    margin: 0 5%;
+   
+  }
+
+  .caption-text {
+    text-align: center; /* Center text alignment */
+    margin-bottom: 1rem; /* Space between text and image */
+    margin-top: 3rem;
+    font-size: 1.5rem;
+  }
+  .caption-subtext {
+    text-align: center; /* Center text alignment */
+    margin-top: 2rem;
+    font-size: 1rem;
+  }
+ 
+  .rounded-image {
+    width: 250px; /* Adjust size for mobile screens */
+    height: 250px; /* Adjust size for mobile screens */
+    margin-bottom: 15px;
+  }
+}
+  
+// CSS for Footer
+  .footer {
+    background-color: $header-primary-color;
+   display: flex;
+    padding: 10px 10px; /* Padding for spacing */
+    text-align: center; /* Center-align the text */
+    box-shadow: 2px 2px 2px 4px rgba(0, 0, 0, 0.1);
+  
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    
+    act-info,
+    .thanks-message {
+      margin: 2px 0; /* Small margin for spacing */
+      font-size: 16px; /* Font size for readability */
+    }
+  
+    .contact-info {
+      font-weight: bold; /* Bold text for emphasis */
+    }
+  
+    .thanks-message {
+      font-style: italic; /* Italic text for a friendly tone */
+    }
+  }
+  
+  //Footer Mobile view
+  @media (max-width: 600px) {
+    .footer {
+      padding: 5px 5px;
+    }
+  
+    .contact-info,
+    .thanks-message {
+      font-size: 14px;
+    }
+  }
+  

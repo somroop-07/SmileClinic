@@ -1,0 +1,190 @@
+@import './../../assets/styles/variables.scss';
+
+.book-appointment-card {
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background: $gradient-primary;
+  overflow-y: auto;
+ 
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: $font-secondary;
+  color: $header-secondary-color;
+  font-size: 30px;
+}
+
+.filter-search-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filter-department, .search-doctor {
+  width: 48%;
+}
+
+.doctor-card {
+  margin-bottom: 20px;
+
+  
+}
+.doctor-card-child{
+
+  border-radius: 5px;
+  
+}
+.doctor-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 20px 10px 20px;
+  font-family: $font-secondary;
+}
+
+.department {
+  text-align: right;
+}
+
+.doctor-description {
+
+  margin-left: 20px;
+}
+
+.doctor-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 20px 10px 20px;
+}
+.pick-slot{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:0px 20px 15px 20px ;
+  font-size:18px;
+  font-family: $font-secondary;
+}
+
+.doctor-fees {
+  font-weight: bold;
+}
+.date-input{
+  width:25%;
+  height: 35px;
+  margin-bottom: 30px;
+}
+.mat-calendar {
+  width: 100%;
+}
+.slot-buttons {
+  display: flex;
+  
+  gap: 10px;
+  justify-content: start;
+
+  margin: 0px 20px 15px 30px;
+}
+.select-slot{
+  font-size: 20px;
+}
+.slot-buttons-content{
+  background-color: rgb(250, 236, 206);
+  font-family: $font-secondary;
+}
+.book-button-parent{
+  display: flex;
+  justify-content: center;
+  margin: 25px 20px 30px 30px;
+}
+.book-button{
+
+  background-color: $side-bar;
+}
+.button-active {
+  background-color: $header-primary-color;
+  box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.1);
+  
+}
+
+.button-inactive {
+  background-color: rgb(250, 236, 206);
+
+}
+.no-results{
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+
+@media (max-width: 600px) {
+  /* Stack filter and search inputs vertically */
+  .filter-search-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .filter-department, .search-doctor {
+    width: 100%;
+  }
+
+  /* Stack doctor header content vertically */
+  .doctor-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 10px 15px;
+    gap:5px
+  }
+
+  .department {
+    text-align: left;
+    font-size: 12px;
+  }
+  .doctor-description {
+
+    margin:0px 15px 10px 15px;
+  }
+  .doctor-footer {
+  
+    margin: 0px 15px 10px 20px;
+  }
+
+  /* Stack date and slot selection vertically */
+  .pick-slot {
+    flex-direction: column;
+
+    gap: 10px;
+    font-size: 16px;
+  }
+
+  .date-input {
+    width:75%;
+  }
+
+  /* Adjust slot buttons for mobile view */
+  .slot-buttons {
+    flex-direction: column;
+    margin: 10px 0px;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  /* Stack buttons vertically */
+  .book-button-parent {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 20px 40px;
+  }
+
+  .book-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

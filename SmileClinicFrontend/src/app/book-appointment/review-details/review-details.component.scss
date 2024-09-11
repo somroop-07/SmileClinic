@@ -1,0 +1,103 @@
+@import './../../../assets/styles/variables.scss';
+
+.custom-toolbar {
+  background-color: $side-bar;
+}
+
+.header-title {
+  flex: 1;
+  margin-left: 10px;
+  font-family: $font-secondary;
+  font-size: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+.mat-typography{
+  background-color: rgb(247, 240, 227);;
+}
+.mat-dialog-content {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+ 
+}
+
+.doctor-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.doctor-name{
+  font-size: 18px;
+  font-weight: bold;
+}
+.doctor-department{
+  font-size: 15px;
+  font-weight: bold;
+}
+.appointment-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+
+}
+
+.appointment-date, .appointment-slot {
+  display: flex;
+  align-items: center; /* Aligns icon and text vertically */
+  gap: 5px; /* Adds space between the icon and text */
+  font-size: 16px;
+  color: #333;
+}
+.mat-dialog-actions {
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+/* Styling for the primary button */
+.submitButton {
+  background-color:$side-bar;
+  color: white;
+  width: 40%;
+
+}
+
+
+/* Styling for the cancel button */
+.cancelButton {
+  background-color: #e64034;
+  color: white;
+}
+
+/* Blur the background when dialog opens */
+::ng-deep .cdk-overlay-backdrop {
+  backdrop-filter: blur(4px); /* Adjust the blur as needed */
+}
+
+/* Responsive design for phones */
+@media (max-width: 600px) {
+  .header-title {
+    font-size: 18px;
+  }
+
+  .mat-dialog-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mat-dialog-actions button {
+    margin: 10px 0;
+    min-width: auto;
+  }
+}

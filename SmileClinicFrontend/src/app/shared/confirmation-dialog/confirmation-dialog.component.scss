@@ -1,0 +1,22 @@
+@import './../../../assets/styles/variables.scss';
+
+
+.custom-toolbar {
+    background-color: grey;
+    color: white;
+
+  }
+  
+  .header-title {
+    flex: 1;
+    margin-left: 10px;
+    font-family: $font-secondary;
+    font-size: 20px; /* Adjust font size for a good appearance */
+    
+  }
+  .mat-typography{
+    font-weight: bold;
+  }
+  .submitButton{
+    background-color:rgb(216, 210, 210);
+  }

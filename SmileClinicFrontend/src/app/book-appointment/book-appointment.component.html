@@ -1,0 +1,146 @@
+<mat-card class="book-appointment-card">
+  <!-- Book Appointment Label -->
+  <h2>Book Appointment</h2>
+
+  <!-- Filter and Search Row -->
+  <div class="filter-search-row">
+    <!-- Filter by Department -->
+    <mat-form-field appearance="outline" class="filter-department">
+      <mat-label>Department</mat-label>
+      <mat-icon matPrefix>filter_list</mat-icon>
+
+      <!-- Clear selection option (X) -->
+      <button
+        *ngIf="selectedDepartment"
+        mat-icon-button
+        matSuffix
+        aria-label="Clear department filter"
+        (click)="clearDepartmentSelection($event)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-select
+        [(value)]="selectedDepartment"
+        (selectionChange)="filterDoctorsHelper()"
+      >
+        <mat-option
+          *ngFor="let department of departmentList"
+          [value]="department"
+        >
+          {{ department.department }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Search by Doctor Name -->
+    <mat-form-field class="search-doctor">
+      <mat-icon matPrefix>search</mat-icon>
+      <input
+        matInput
+        placeholder="Search Doctor"
+        [(ngModel)]="searchDoctor"
+        (input)="onSearchInput()"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let doctor of doctorSuggestions"
+          (click)="selectDoctorSuggestion(doctor)"
+        >
+          {{ doctor.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+  <!-- Doctor Cards -->
+
+  <div *ngIf="filteredDoctors.length == 0" class="no-results">
+    No Results to show
+  </div>
+  <div *ngIf="!(filteredDoctors.length == 0)" style="margin-bottom: 100px">
+    <div *ngFor="let doctor of filteredDoctors" class="doctor-card">
+      <mat-card class="doctor-card-child">
+        <!-- Doctor Name and Department -->
+        <div class="doctor-header">
+          <span>{{ doctor.name }}</span>
+          <span class="department">{{ doctor.department_name }}</span>
+        </div>
+
+        <!-- Doctor Description -->
+        <div class="doctor-description">{{ doctor.description }}</div>
+
+        <!-- Doctor Fees and Date Picker -->
+        <div class="doctor-footer">
+          <span class="doctor-fees">Fees: ₹{{ doctor.fees }}</span>
+          <mat-form-field class="date-input" appearance="outline">
+            <input
+              matInput
+              [matDatepicker]="picker"
+              placeholder="Select Date"
+              [(ngModel)]="doctor.selectedDate"
+              [matDatepickerFilter]="filterFutureDates"
+              (dateChange)="onDateChange($event, doctor)"
+            />
+            <!-- Clear selection option (X) -->
+            <button
+              *ngIf="doctor.selectedDate"
+              mat-icon-button
+              matPrefix
+              aria-label="Clear department filter"
+              (click)="clearCalenderSelection($event)"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div
+          class="pick-slot"
+          *ngIf="selectedDoctor == doctor && doctor.selectedDate != null"
+        >
+          <span>Pick a slot</span>
+        </div>
+        <div
+          *ngIf="selectedDoctor == doctor && doctor.selectedDate != null"
+          class="slot-buttons"
+        >
+          <div *ngFor="let slot of slots; let i = index">
+            <button
+              class="slot-buttons-content"
+              mat-raised-button
+              [disabled]="slotsFull[i] == 1"
+              [ngClass]="{
+                'button-active': selectedDoctor.selectedSlot === i + 1,
+                'button-inactive': selectedDoctor.selectedSlot !== i + 1
+              }"
+              (click)="setSlot(i + 1)"
+            >
+              {{ slot }}
+            </button>
+          </div>
+        </div>
+        <div
+          class="book-button-parent"
+          *ngIf="
+            selectedDoctor == doctor &&
+            doctor.selectedDate != null &&
+            doctor.selectedSlot != null
+          "
+        >
+          <button
+            mat-raised-button
+            class="book-button"
+            (click)="handleReviewAction()"
+          >
+            Book Appointment
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</mat-card>

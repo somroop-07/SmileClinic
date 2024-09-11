@@ -1,0 +1,19 @@
+<mat-toolbar class="custom-toolbar">
+  <mat-toolbar-row>
+    <span class="header-title">Confirmation</span>
+    <span class="spacer"></span>
+    <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+  Are you sure want to {{ details.message }}
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button mat-raised-button class="submitButton" (click)="handleChangeAction()">
+    Yes
+  </button>
+  <button mat-raised-button class="submitButton" mat-dialog-close>No</button>
+</mat-dialog-actions>
